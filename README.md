@@ -7,12 +7,18 @@ Package includes:
 - LindenMayer System
 - Examples
 
-Requirements:
+Dependancies
 ```
-pip install drawille
+$ pip install drawille
 ```
 
 # Examples
+
+```
+$ git clone https://github.com/A1rPun/Fractals
+$ cd Fractals
+$ python -m fractals.dragoncurve
+```
 
 ## Dragon curve
 ```
@@ -52,6 +58,7 @@ pip install drawille
 
 ## Gosper curve
 ```
+$ python -m fractals.gospercurve
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢤⠤⠤⠤⠤⠤⠤⠤⢄
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢆⠀⠀⠀⠀⠀⠀⠈⢆
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢲⠒⠒⠒⠒⠒⠒⠒⢢⠀⠀⠈⠒⠒⠒⢲⠂⠀⠀⢨⠂
@@ -99,6 +106,7 @@ pip install drawille
 
 ## Hexaflake
 ```
+$ python -m fractals.hexaflake
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠋⠉⠉⢣⢠⠋⠉⠉⢣⠀⠀⠀⡸⠉⠉⠙⡄⡜⠉⠉⠙⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡜⠉⠉⠹⣠⠋⠉⠉⢣⠀⠀⠀⢠⠋⠉⠉⢣⢠⠋⠉⠉⢣
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢎⡀⠀⠀⣈⢎⡀⠀⠀⣈⠆⠀⠀⢇⠀⠀⢀⡱⣁⠀⠀⢀⡱⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠰⣁⠀⠀⢀⢏⡀⠀⠀⣈⠆⠀⠀⢎⡀⠀⠀⣈⢎⡀⠀⠀⣈⠆
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡰⠒⠚⠳⡉⠀⠀⠈⡱⠛⠒⠲⡀⡖⠒⠛⢎⠁⠀⠀⢉⠞⠓⠒⢆⠀⠀⠀⠀⠀⠀⠀⠀⢀⠖⠒⠛⡎⠁⠀⠈⡱⠛⠒⠲⡀⡰⠒⠚⠳⡉⠀⠀⠈⡱⠛⠒⠲⡀
@@ -145,17 +153,23 @@ pip install drawille
 
 # TODO
 
-Cantor Dust
-Golden Ratio
-Golden Dragon
-Sierpinski carpet (better version) / menger sponge
-Z order Curve
-H-Tree
-Maple
-Fern
-Vicsek
-Roessler
-Verhulst
+- Curses for animations & colors
+- Automatic sizing
+- Zooming
+
+- Cantor Dust
+- Golden Ratio
+- Golden Dragon
+- Sierpinski carpet (better version) / menger sponge
+- Z order Curve
+- H-Tree
+- Maple
+- Fern
+- Vicsek
+- Roessler
+- Verhulst
+
+Links
 
 - https://en.wikipedia.org/wiki/List_of_fractals_by_Hausdorff_dimension
 - http://www.kevs3d.co.uk/dev/lsystems/
