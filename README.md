@@ -1,24 +1,33 @@
 # Fractals
 
-Draw beatiful fractals in your terminal with drawille
-
-Package includes:
-
-- LindenMayer System
-- Examples
+Draw beautiful fractals in your terminal with drawille
 
 Dependancies
 ```
 $ pip install drawille
 ```
 
-# Examples
+# Installation
 
 ```
 $ git clone https://github.com/A1rPun/Fractals
 $ cd Fractals
-$ python -m fractals.dragoncurve
+$ python explorer.py
 ```
+
+# Usage
+
+**Keys**
+
+- `→` = Next fractal
+- `←` = Previous fractal
+- `↑` = Increase fractal iteration
+- `↓` = Decrease fractal iteration
+- `s` = Increase line size / zoom in
+- `a` = Decrease line size / zoom out
+- `x` = Rotate fractal to right
+- `z` = Rotate fractal to left
+- `q` = Quit. Also prints current fractal to terminal
 
 ## Dragon curve
 ```
@@ -58,7 +67,6 @@ $ python -m fractals.dragoncurve
 
 ## Gosper curve
 ```
-$ python -m fractals.gospercurve
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢤⠤⠤⠤⠤⠤⠤⠤⢄
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢆⠀⠀⠀⠀⠀⠀⠈⢆
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢲⠒⠒⠒⠒⠒⠒⠒⢢⠀⠀⠈⠒⠒⠒⢲⠂⠀⠀⢨⠂
@@ -106,7 +114,6 @@ $ python -m fractals.gospercurve
 
 ## Hexaflake
 ```
-$ python -m fractals.hexaflake
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠋⠉⠉⢣⢠⠋⠉⠉⢣⠀⠀⠀⡸⠉⠉⠙⡄⡜⠉⠉⠙⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡜⠉⠉⠹⣠⠋⠉⠉⢣⠀⠀⠀⢠⠋⠉⠉⢣⢠⠋⠉⠉⢣
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢎⡀⠀⠀⣈⢎⡀⠀⠀⣈⠆⠀⠀⢇⠀⠀⢀⡱⣁⠀⠀⢀⡱⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠰⣁⠀⠀⢀⢏⡀⠀⠀⣈⠆⠀⠀⢎⡀⠀⠀⣈⢎⡀⠀⠀⣈⠆
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡰⠒⠚⠳⡉⠀⠀⠈⡱⠛⠒⠲⡀⡖⠒⠛⢎⠁⠀⠀⢉⠞⠓⠒⢆⠀⠀⠀⠀⠀⠀⠀⠀⢀⠖⠒⠛⡎⠁⠀⠈⡱⠛⠒⠲⡀⡰⠒⠚⠳⡉⠀⠀⠈⡱⠛⠒⠲⡀
@@ -153,9 +160,9 @@ $ python -m fractals.hexaflake
 
 # TODO
 
-- Curses for animations & colors
-- Automatic sizing
-- Zooming
+- Colors
+- Center on fractal
+- Add bottom row info about name/size/iter
 
 - Cantor Dust
 - Golden Ratio
