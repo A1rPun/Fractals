@@ -1,4 +1,10 @@
-class LSystem(object):
+from math import sqrt
+
+class Fractal(object):
+    def __init__(self):
+        self.name = ""
+
+class LSystem(Fractal):
     def __init__(self, axiom='', angle=0, productions={}, ignore=''):
         self.lines = [axiom]
         self.angle = angle
@@ -13,7 +19,46 @@ class LSystem(object):
             return self.lines[n]
 
 
+class Mandelbrot(Fractal):
+    def __init__(self):
+        self.MAX_ITER = 300
+    
+    def plot(self, x, y, width, height, zoom=1, moveX=0, moveY=0):
+        preal = 1.5 * (x - width / 2) / (0.5 * zoom * width) + moveX
+        pimag = (y - height / 2) / (0.5 * zoom * height) + moveY
+        re = 0
+        im = 0
+        n = 0
+        while re*re + im*im < 4 and n < self.MAX_ITER:
+            re, im = re*re - im*im + preal, 2 * re*im + pimag
+            n += 1
+        return n
+
+
+class Julia(Fractal):
+    def __init__(self):
+        self.MAX_ITER = 300
+        self.cRe = -0.7
+        self.cIm = 0.27015
+    
+    def plot(self, x, y, width, height, zoom=1, moveX=0, moveY=0):
+        re = 1.5 * (x - width / 2) / (0.5 * zoom * width) + moveX
+        im = (y - height / 2) / (0.5 * zoom * height) + moveY
+        n = 0
+        while re*re + im*im < 4 and n < self.MAX_ITER:
+            re, im = re*re - im*im + self.cRe, 2 * re*im + self.cIm
+            n += 1
+        return n
+
+
+class Goldenratio(Fractal):
+    def __init__(self):
+        self.phi = (1 + sqrt(5)) / 2
+        self.angle = 90
+
+
 fractals = [
+    Goldenratio(),
     # Binary Tree
     LSystem('0', 45, {
         '0': '1[-0]+0', 
@@ -22,7 +67,7 @@ fractals = [
     # Cesaro
     LSystem('F', 85, { 'F': 'F+F--F+F' }),
     # Cross
-    LSystem('F--F--F', 90, 'F', { 'F': 'F+F--F+F' }),
+    #LSystem('F--F--F', 90, 'F', { 'F': 'F+F--F+F' }),
     # Dragon Curve
     LSystem('FX', 90, {
         'X': 'X+YF+', 
@@ -38,6 +83,8 @@ fractals = [
         'A': '-BF+AFA+FB-',
         'B': '+AF-BFB-FA+',
     }, 'AB'),
+    # Julia set
+    Julia(),
     # Koch Curve
     LSystem('F', 60, { 'F': 'F-F++F-F' }),
     # Koch Island
@@ -50,6 +97,8 @@ fractals = [
     LSystem('F++F++F', 60, { 'F': 'F+F--F+F' }),
     # Levy C Curve
     LSystem('F+', 45, { 'F': '+F--F+' }),
+    # Mandelbrot
+    Mandelbrot(),
     # Mango Kolam
     LSystem('A---A', 60, {
         'A': 'f-F+Z+F-fA',

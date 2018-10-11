@@ -2,9 +2,17 @@
 
 Draw beautiful fractals in your terminal with drawille
 
-Dependancies
+### Dependancies
+
+**drawille**
 ```
 $ pip install drawille
+```
+
+**curses**
+This is a default library in UNIX-like systems but for Windows there is an alternate package:
+```
+$ pip install http://www.lfd.uci.edu/~gohlke/pythonlibs/xugyqnq9/curses-2.2-cp27-none-win32.whl
 ```
 
 # Installation
