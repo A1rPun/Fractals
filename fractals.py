@@ -4,6 +4,7 @@ class Fractal(object):
     def __init__(self):
         self.name = ""
 
+
 class LSystem(Fractal):
     def __init__(self, axiom='', angle=0, productions={}, ignore=''):
         self.lines = [axiom]
@@ -58,7 +59,6 @@ class Goldenratio(Fractal):
 
 
 fractals = [
-    Goldenratio(),
     # Binary Tree
     LSystem('0', 45, {
         '0': '1[-0]+0', 
@@ -73,6 +73,8 @@ fractals = [
         'X': 'X+YF+', 
         'Y': '-FX-Y',
     }),
+    # Golden ratio
+    Goldenratio(),
     # Gosper Curve    
     LSystem('A', 60, {
         'A': 'A-B--B+A++AA+B-', 

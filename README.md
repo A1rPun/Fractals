@@ -2,7 +2,7 @@
 
 Draw beautiful fractals in your terminal with drawille
 
-### Dependancies
+### Dependencies
 
 **drawille**
 ```

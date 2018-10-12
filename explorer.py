@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import curses
 import time
-from math import pi
+from math import pi, sin
 from drawille import Canvas, Turtle, getTerminalSize
 from fractals import LSystem, Mandelbrot, Julia, Goldenratio, fractals
 
@@ -41,26 +41,15 @@ def lsystem2drawille(lsystem, n, size, initial_rotation):
     return t.frame()
 
 
-def mandelbrot2drawille(mandelbrot, n):
+def complexset2drawille(complexset, n):
     can = Canvas()
     w, h = getTerminalSize()
     w *= 2
     h *= 4
+
     for row in range(h):
         for col in range(w):
-            if mandelbrot.plot(col, row, w, h, n) >= mandelbrot.MAX_ITER:
-                can.set(col, row)
-    return can.frame()
-
-
-def julia2drawille(julia, n):
-    can = Canvas()
-    w, h = getTerminalSize()
-    w *= 2
-    h *= 4
-    for row in range(h):
-        for col in range(w):
-            if julia.plot(col, row, w, h, n) >= julia.MAX_ITER:
+            if complexset.plot(col, row, w, h, n) >= complexset.MAX_ITER:
                 can.set(col, row)
     return can.frame()
 
@@ -70,25 +59,37 @@ def goldenratio2drawille(goldenratio, n, s, angle):
         for i in range(4):
             t.forward(size)
             t.right(goldenratio.angle)
-    
-    def circle(radius, extent = 360, step = 360):
-        sideLength = (2 * pi * radius) / step
-        turnAngle = extent / step
-        for i in range(step):
-            t.forward(sideLength)
-            t.right(turnAngle)
+
+    # Taken from python turtle library
+    def circle(radius, extent=None, steps=None):
+        fullCircle = 360
+        if extent is None:
+            extent = fullCircle
+        if steps is None:
+            frac = abs(extent) / fullCircle
+            steps = 1+int(min(11+abs(radius) / 6.0, 59.0)*frac)
+        w = 1.0 * extent / steps
+        w2 = 0.5 * w
+        l = 2.0 * radius * sin(w2*pi/180.0)
+        if radius < 0:
+            l, w, w2 = -l, -w, -w2
+        t.right(w2)
+        for i in range(steps):
+            t.forward(l)
+            t.right(w)
+        t.left(w2)
 
     t = Turtle()
     size = getTerminalSize()[0] + s
     t.rotation = goldenratio.angle + angle
-    
+
     for i in range(n):
         square(size)
         t.forward(size)
         t.right(goldenratio.angle)
         t.forward(size)
         size /= goldenratio.phi
-        
+
     t.up()
     t.move(0, 0)
     t.down()
@@ -96,18 +97,17 @@ def goldenratio2drawille(goldenratio, n, s, angle):
     t.rotation = goldenratio.angle + angle
 
     for i in range(n):
-        circle(size / 4, 90)
+        circle(size, 90)
         size /= goldenratio.phi
 
     return t.frame()
 
+
 def getDrawing():
     global currentfractal, drawing, iteration, size, angle
     fractal = fractals[currentfractal]
-    if isinstance(fractal, Mandelbrot):
-        drawing = mandelbrot2drawille(fractal, iteration)
-    elif isinstance(fractal, Julia):
-        drawing = julia2drawille(fractal, iteration)
+    if isinstance(fractal, Mandelbrot) or isinstance(fractal, Julia):
+        drawing = complexset2drawille(fractal, iteration)
     elif isinstance(fractal, Goldenratio):
         drawing = goldenratio2drawille(fractal, iteration, size, angle)
     else:
@@ -151,7 +151,7 @@ def main(stdscr):
                 size -= 1
                 restore()
         elif key == ord('z'):
-            angle = 360 if angle <= 1 else angle - 45           
+            angle = 360 if angle <= 1 else angle - 45
             restore()
         elif key == ord('x'):
             angle = 0 if angle >= 359 else angle + 45
